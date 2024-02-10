@@ -20,13 +20,24 @@ function autoPlay() {
   
     },1000);
     isAutoplaying = true;
+    document.querySelector('.js-auto-button').innerHTML = 'Stop playing';
   } else {
     clearInterval(interValid);
     isAutoplaying = false;
+    document.querySelector('.js-auto-button').innerHTML = 'Autoplay';
 
   }
   
 }
+
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'a') { autoPlay();}
+
+})
+
+document.querySelector('.js-auto-button').addEventListener('click', () => {
+  autoPlay();
+})
 
 document.querySelector('.js-move-button')
 .addEventListener('click', () => {
