@@ -30,8 +30,15 @@ function autoPlay() {
   
 }
 
+
+
+
+
 document.body.addEventListener('keydown', (event) => {
   if (event.key === 'a') { autoPlay();}
+  else if (event.key === 'Backspace') {
+    resetscore();
+  };
 
 })
 
@@ -64,6 +71,20 @@ document.body.addEventListener('keydown',(event) => {
       }
   
 });
+
+function resetscore() {
+  score.Wins = 0;
+    score.losses = 0;
+    score.Ties = 0;
+    localStorage.removeItem('score');
+    updateScore();
+}
+
+document.querySelector('.js-reset').addEventListener('click', () => {
+  resetscore();
+});
+
+
 
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
